@@ -11,14 +11,14 @@ namespace Emerlahn.TestLibrary
 {
     public static class AssertionExtensions
     {
-        public static void AssertAll(this IEnumerable<Action> asserts)
+        public static void AssertAll(this IEnumerable<Action> assertions)
         {
             var exceptions = new List<Exception>();
-            foreach (var assert in asserts)
+            foreach (var assertion in assertions)
             {
                 try
                 {
-                    assert();
+                    assertion();
                 }
                 catch (Exception ex)
                 {
