@@ -46,12 +46,12 @@ namespace Emerlahn.TestLibrary
             asserts.AssertAll();
         }
 
-        public static void VerifyConstructorGuardClauses(this Type type)
+        public static void VerifyConstructorGuardClauses(this Type type, params string[] ignoredParameters)
         {
             var fixture = new Fixture().Customize(new AutoMoqCustomization());
             var deferred = new DeferredBehaviourExpectation();
             var assertion = new GuardClauseAssertion(fixture, deferred);
-            assertion.Verify(type.GetConstructors());
+            assertion.Verify(type.GetConstructors().Where(ci => !ignoredParameters.Contains(ci.Name)));
             deferred.Assertions.AssertAll();
         }
     }

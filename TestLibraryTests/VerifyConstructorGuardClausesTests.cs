@@ -1,41 +1,50 @@
 ﻿using NUnit.Framework;
-using System;
 using Emerlahn.TestLibrary;
 using FluentAssertions;
+using System;
 
 namespace TestLibraryTests
 {
     [TestFixture]
     public class VerifyConstructorGuardClausesTests
     {
-        internal class TestClassWithoutGuardClauses
+        internal class TestClassWithMissingGuardClauses
         {
-            public TestClassWithoutGuardClauses(StringComparer stringComparer, string dogs)
+            public TestClassWithMissingGuardClauses(int? cats, string dogs)
             {
+                if (cats == null) throw new ArgumentNullException(nameof(cats));
             }
         }
 
-        internal class TestClassWithGuardClauses
+        internal class TestClassWithAllGuardClauses
         {
-            public TestClassWithGuardClauses(StringComparer stringComparer, string dogs)
+            public TestClassWithAllGuardClauses(int? cats, string dogs)
             {
-                if (stringComparer == null) throw new ArgumentNullException(nameof(stringComparer));
+                if (cats == null) throw new ArgumentNullException(nameof(cats));
                 if (dogs == null) throw new ArgumentNullException(nameof(dogs));
             }
         }
 
         [Test]
-        public void Given_constructor_without_guard_clauses_should_throw()
+        public void Given_constructor_with_missing_guard_clause_should_throw()
         {
-            Action act = () => typeof(TestClassWithoutGuardClauses).VerifyConstructorGuardClauses();
+            Action act = () => typeof(TestClassWithMissingGuardClauses).VerifyConstructorGuardClauses();
 
             act.ShouldThrow<Exception>();
         }
 
         [Test]
-        public void Given_constructor_with_guard_clauses_shouldnt_throw()
+        public void Given_constructor_with_all_guard_clauses_should_not_throw()
         {
-            Action act = () => typeof(TestClassWithGuardClauses).VerifyConstructorGuardClauses();
+            Action act = () => typeof(TestClassWithAllGuardClauses).VerifyConstructorGuardClauses();
+
+            act.ShouldNotThrow<Exception>();
+        }
+
+        [Test]
+        public void Given_constructor_with_ignored_missing_should_not_throw()
+        {
+            Action act = () => typeof(TestClassWithAllGuardClauses).VerifyConstructorGuardClauses("dogs");
 
             act.ShouldNotThrow<Exception>();
         }
