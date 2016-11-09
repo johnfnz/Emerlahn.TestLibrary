@@ -7,7 +7,7 @@ using Ploeh.AutoFixture;
 using Ploeh.AutoFixture.AutoMoq;
 using Ploeh.AutoFixture.Idioms;
 
-namespace Emerlahn.TestLibrary
+namespace Emerlahn.TestLibrary 
 {
     public static class AssertionExtensions
     {
