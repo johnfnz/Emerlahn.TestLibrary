@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Emerlahn.TestLibrary</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>John Fahey</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/johnfnz/Emerlahn.TestLibrary/blob/master/LICENSE.txt</licenseUrl> 
+    <projectUrl>https://github.com/johnfnz/Emerlahn.TestLibrary</projectUrl>     
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <releaseNotes></releaseNotes>
+    <description>Test library extensions</description>
+    <copyright>Copyright 2016</copyright>
+    <tags></tags>
+    <dependencies>
+      <group targetFramework="uap">
+        <dependency id="Microsoft.NETCore.Portable.Compatibility" version="1.0.1" />
+        <dependency id="Albedo" version="1.0.0" />
+        <dependency id="Autofixture" version="3.50.2" />
+        <dependency id="Autofixture.AutoMoq" version="3.50.2" />
+        <dependency id="Autofixture.Idioms" version="3.50.2" />
+        <dependency id="CommonServiceLocator" version="1.3" />
+        <dependency id="Emerlahn.Utilities" version="2.0.0.16" />
+        <dependency id="FluentAssertions" version="4.15.0" />
+        <dependency id="Moq" version="4.1.1308.2120" />
+        <dependency id="Unity" version="4.0.1" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
