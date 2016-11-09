@@ -1,4 +1,4 @@
-version: 1.0.0.{build}
+version: 1.0.1
 
 branches:
   only:
@@ -25,7 +25,7 @@ after_test:
 artifacts:
   - path: TestLibrary\bin\Release\Emerlahn.TestLibrary.dll
     name: Emerlahn.TestLibrary.dll
-  - path: '**\*.nupkg'
+  - path: 'Emerlahn.TestLibrary.*.nupkg'
 
 deploy:
 - provider: NuGet
