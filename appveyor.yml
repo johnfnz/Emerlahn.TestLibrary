@@ -25,7 +25,6 @@ after_test:
 artifacts:
   - path: TestLibrary\bin\Release\Emerlahn.TestLibrary.dll
     name: Emerlahn.TestLibrary.dll
-  - path: 'Emerlahn.TestLibrary.*.nupkg'
 
 deploy:
 - provider: NuGet
